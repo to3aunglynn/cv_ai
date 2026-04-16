@@ -1,5 +1,11 @@
 # AI CV Tailor
 
+### DarkMode
+![AI-CV-DarkMode](./dark.png)
+
+### LightMode
+![AI-CV-LightMode](./light.png)
+
 ## How to run
 
 1. Install dependencies (once):
