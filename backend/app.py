@@ -5,6 +5,9 @@ from ai_service import analyze_cv
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def home():
+    return "AI Resume Tailor backend is running"
 
 @app.route("/api/health", methods=["GET"])
 def health():
