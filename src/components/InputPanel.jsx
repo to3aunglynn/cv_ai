@@ -1,4 +1,5 @@
 import React from "react";
+import ResumeTabs from "./ResumeTabs";
 
 const InputPanel = ({
   cv,
@@ -36,22 +37,12 @@ const InputPanel = ({
       </header>
 
       <div className="cv-input-row">
-        <section className="cv-panel">
-          <h3 className="cv-panel__title">Your Resume</h3>
-          <textarea
-            className="cv-textarea"
-            rows={8}
-            placeholder="Paste your current CV..."
-            value={cv}
-            onChange={(e) => setCv(e.target.value)}
-          />
-        </section>
+        <ResumeTabs cv={cv} setCv={setCv} />
 
         <section className="cv-panel">
           <h3 className="cv-panel__title">Job Description</h3>
           <textarea
-            className="cv-textarea"
-            rows={8}
+            className="cv-textarea cv-textarea--height-fixed"
             placeholder="Paste the role description..."
             value={job}
             onChange={(e) => setJob(e.target.value)}

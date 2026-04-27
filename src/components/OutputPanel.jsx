@@ -27,6 +27,7 @@ const OutputPanel = ({ result, loading, error }) => {
             </>
           )}
         </div>
+
       </section>
 
       <section className="cv-keywords">
