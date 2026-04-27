@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { getInitialTheme, syncThemeToDocument } from "./theme";
+import { getInitialTheme, syncThemeToDocument } from "./theme/theme";
 import InputPanel from "./components/InputPanel";
 import OutputPanel from "./components/OutputPanel";
 import analyzeCV from "./api/cvService";
 
 function App() {
-  const [cv, setCv] = useState("");
-  const [job, setJob] = useState("");
+  const [cv, setCv] = useState(
+    "I am a computing student with Python and React experience.",
+  );
+  const [job, setJob] = useState(
+    "We are looking for a junior developer with Flask and React skills.",
+  );
   const [result, setResult] = useState(null);
   const [theme, setTheme] = useState(getInitialTheme);
   const [loading, setLoading] = useState(false);
@@ -16,7 +20,6 @@ function App() {
     syncThemeToDocument(theme);
   }, [theme]);
 
-  
   const handleTailor = async () => {
     if (!cv.trim() || !job.trim()) {
       setError("Please fill in both CV text and job description first.");
