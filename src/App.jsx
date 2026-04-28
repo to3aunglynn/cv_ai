@@ -17,10 +17,14 @@ const emptyResumeData = {
       endYear: "",
     },
   ],
-  jobTitle: "",
-  company: "",
-  experienceStartYear: "",
-  experienceEndYear: "",
+  experience: [
+    {
+      jobTitle: "",
+      company: "",
+      startYear: "",
+      endYear: "",
+    },
+  ],
   skills: [],
 };
 

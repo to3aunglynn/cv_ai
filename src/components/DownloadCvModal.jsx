@@ -55,9 +55,6 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
 
               <section className="cv-modal__section">
                 <h3>Education</h3>
-                {/* <p>{resumeData.degree || "Not provided"}</p>
-                <p>{resumeData.university || ""}</p>
-                <p>{resumeData.educationYear || ""}</p> */}
                 {resumeData.education?.length > 0 ? (
                   resumeData.education.map((edu, index) => (
                     <div key={index} className="cv-modal__education-item">
@@ -81,12 +78,26 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
 
               <section className="cv-modal__section">
                 <h3>Experience</h3>
-                <p>{resumeData.jobTitle || "Not provided"}</p>
-                <p>{resumeData.company || ""}</p>
-                <p>
-                  {resumeData.experienceStartYear || ""} -{" "}
-                  {resumeData.experienceEndYear || ""}
-                </p>
+                {resumeData.experience?.length > 0 ? (
+                  resumeData.experience.map((exp, index) => (
+                    <div key={index} className="cv-modal__experience-item">
+                      <p>
+                        <strong>Job Title:</strong>{" "}
+                        {exp.jobTitle || "Not provided"}
+                      </p>
+                      <p>
+                        <strong>Company:</strong>{" "}
+                        {exp.company || "Not provided"}
+                      </p>
+                      <p>
+                        <strong>Years:</strong> {exp.startYear || ""} -{" "}
+                        {exp.endYear || ""}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p>No experience details provided.</p>
+                )}
               </section>
 
               <section className="cv-modal__section">

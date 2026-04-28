@@ -1,6 +1,7 @@
 import React from "react";
 import SkillsInput from "./SkillsInput";
 import EducationInput from "./EducationInput";
+import ExperienceInput from "./ExperienceInput";
 
 const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
   const handleChange = (e) => {
@@ -15,7 +16,7 @@ const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
     <div className="resume-tab-content__panel__body">
       <h2 className="resume-tab-content__panel__title">{item.title}</h2>
 
-      {item.title === "Personal" && (
+      {item.id === 1 && (
         <div className="resume-form">
           <input
             className="resume-builder__input resume-builder-input-spacing"
@@ -48,7 +49,7 @@ const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
         </div>
       )}
 
-      {item.title === "Education" && (
+      {item.id === 2 && (
         <EducationInput
           education={resumeData.education}
           setEducation={(updatedEducation) =>
@@ -58,72 +59,21 @@ const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
             })
           }
         />
-        /* <div className="resume-form-grid">
-          <input
-            className="resume-builder__input"
-            name="degree"
-            value={resumeData.degree}
-            onChange={handleChange}
-            placeholder="Degree / Course"
-          />
-          <input
-            className="resume-builder__input"
-            name="university"
-            value={resumeData.university}
-            onChange={handleChange}
-            placeholder="University"
-          />
-          <input
-            className="resume-builder__input"
-            name="educationStartYear"
-            value={resumeData.educationStartYear}
-            onChange={handleChange}
-            placeholder="Start Year"
-          />
-          <input
-            className="resume-builder__input"
-            name="educationEndYear"
-            value={resumeData.educationEndYear}
-            onChange={handleChange}
-            placeholder="To Year"
-          />
-        </div> */
       )}
 
-      {item.title === "Experience" && (
-        <div className="resume-form-grid">
-          <input
-            className="resume-builder__input"
-            name="jobTitle"
-            value={resumeData.jobTitle}
-            onChange={handleChange}
-            placeholder="Job title"
-          />
-          <input
-            className="resume-builder__input"
-            name="company"
-            value={resumeData.company}
-            onChange={handleChange}
-            placeholder="Company"
-          />
-          <input
-            className="resume-builder__input"
-            name="experienceStartYear"
-            value={resumeData.experienceStartYear}
-            onChange={handleChange}
-            placeholder="Start Year"
-          />
-          <input
-            className="resume-builder__input"
-            name="experienceEndYear"
-            value={resumeData.experienceEndYear}
-            onChange={handleChange}
-            placeholder="To Year"
-          />
-        </div>
+      {item.id === 3 && (
+        <ExperienceInput
+          experience={resumeData.experience}
+          setExperience={(updatedExperience) =>
+            setResumeData({
+              ...resumeData,
+              experience: updatedExperience,
+            })
+          }
+        />
       )}
 
-      {item.title === "Skills" && (
+      {item.id === 4 && (
         <SkillsInput
           skills={resumeData.skills}
           setSkills={(updatedSkills) =>
@@ -135,7 +85,7 @@ const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
         />
       )}
 
-      {item.title === "Data" && (
+      {item.id === 5 && (
         <div className="resume-form-grid">
           <textarea
             className="cv-textarea"

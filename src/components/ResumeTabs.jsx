@@ -12,7 +12,7 @@ const processTabs = [
   { id: 2, title: "Education", icon: SlGraduation },
   { id: 3, title: "Experience", icon: BsSuitcaseLg },
   { id: 4, title: "Skills", icon: RiToolsFill },
-  { id: 5, title: "Data", icon: MdDataObject },
+  { id: 5, title: "Describe yourself", icon: MdDataObject },
 ];
 
 const ResumeTabs = ({ cv, setCv, resumeData, setResumeData }) => {
