@@ -6,6 +6,8 @@ const InputPanel = ({
   setCv,
   job,
   setJob,
+  resumeData,
+  setResumeData,
   onClear,
   onTailor,
   loading,
@@ -37,7 +39,12 @@ const InputPanel = ({
       </header>
 
       <div className="cv-input-row">
-        <ResumeTabs cv={cv} setCv={setCv} />
+        <ResumeTabs
+          cv={cv}
+          setCv={setCv}
+          resumeData={resumeData}
+          setResumeData={setResumeData}
+        />
 
         <section className="cv-panel">
           <h3 className="cv-panel__title">Job Description</h3>

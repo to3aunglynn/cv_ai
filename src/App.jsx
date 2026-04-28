@@ -4,7 +4,28 @@ import InputPanel from "./components/InputPanel";
 import OutputPanel from "./components/OutputPanel";
 import analyzeCV from "./api/cvService";
 
+const emptyResumeData = {
+  fullName: "",
+  email: "",
+  phone: "",
+  location: "",
+  education: [
+    {
+      degree: "",
+      university: "",
+      startYear: "",
+      endYear: "",
+    },
+  ],
+  jobTitle: "",
+  company: "",
+  experienceStartYear: "",
+  experienceEndYear: "",
+  skills: [],
+};
+
 function App() {
+  const [resumeData, setResumeData] = useState(emptyResumeData);
   const [cv, setCv] = useState(
     "I am a computing student with Python and React experience.",
   );
@@ -49,17 +70,25 @@ function App() {
         job={job}
         setJob={setJob}
         loading={loading}
+        resumeData={resumeData}
+        setResumeData={setResumeData}
         onClear={() => {
           setCv("");
           setJob("");
           setResult(null);
+          setResumeData(emptyResumeData);
         }}
         onTailor={handleTailor}
         theme={theme}
         toggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
       />
 
-      <OutputPanel result={result} loading={loading} error={error} />
+      <OutputPanel
+        result={result}
+        loading={loading}
+        error={error}
+        resumeData={resumeData}
+      />
     </div>
   );
 }

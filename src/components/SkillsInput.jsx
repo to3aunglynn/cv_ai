@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
-const SkillsInput = () => {
+const SkillsInput = ({ skills, setSkills }) => {
   const [skillInput, setSkillInput] = useState("");
-  const [skills, setSkills] = useState([]);
+  // const [skills, setSkills] = useState([]);
 
   const addSkill = () => {
     const newSkill = skillInput.trim();
@@ -53,8 +53,8 @@ const SkillsInput = () => {
       </div>
 
       <div className="skills-builder__chips">
-        {skills.map((skill, index) => (
-          <span className="skills-builder__chip" key={index}>
+        {skills.map((skill, i) => (
+          <span className="skills-builder__chip" key={i}>
             {skill}
             <button type="button" onClick={() => removeSkill(skill)}>
               <IoIosClose />

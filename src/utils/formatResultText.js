@@ -1,12 +1,13 @@
 const formatResultText = (data) => {
   if (!data) return "";
   const sections = [
-    ["Summary", data.summary || "No summary available."],
     ["Match Score", `${data.match_score ?? 0}%`],
+    ["Summary", data.summary || "No summary available."],
     ["Matched Skills", data.matched_skills],
     ["Missing Skills", data.missing_skills],
     ["Improvement Suggestions", data.improvement_suggestions],
     ["Tailored CV Points", data.tailored_cv_points],
+    ["Uk ATS Advice", data.uk_ats_advice],
   ];
 
   const result = sections.map(([title, content]) => {

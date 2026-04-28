@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import formatResultText from "../utils/formatResultText";
 import useTypingEffect from "../hooks/useTypingEffect";
+import DownloadCvModal from "./DownloadCvModal";
 
-const OutputPanel = ({ result, loading, error }) => {
+const OutputPanel = ({ result, loading, error, resumeData }) => {
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
   const fullText = formatResultText(result);
 
   // this is from /hooks/useTypingEffect.js
@@ -27,7 +30,6 @@ const OutputPanel = ({ result, loading, error }) => {
             </>
           )}
         </div>
-
       </section>
 
       <section className="cv-keywords">
@@ -44,13 +46,11 @@ const OutputPanel = ({ result, loading, error }) => {
           <button
             type="button"
             className="cv-btn cv-btn--secondary cv-keywords__copy"
+            disabled={!result || isTyping}
+            onClick={() => setIsDownloadModalOpen(true)}
           >
             {!isTyping ? (
-              <span
-                className={`download-text ${!isTyping ? "is-visible" : ""}`}
-              >
-                Download CV
-              </span>
+              <span className="download-text is-visible">Download CV</span>
             ) : (
               <div className="typing-indicator">
                 <span className="typing-dot"></span>
@@ -61,6 +61,12 @@ const OutputPanel = ({ result, loading, error }) => {
           </button>
         </div>
       </section>
+      <DownloadCvModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        result={result}
+        resumeData={resumeData}
+      />
     </>
   );
 };

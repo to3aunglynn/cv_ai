@@ -15,7 +15,7 @@ const processTabs = [
   { id: 5, title: "Data", icon: MdDataObject },
 ];
 
-const ResumeTabs = ({ cv, setCv }) => {
+const ResumeTabs = ({ cv, setCv, resumeData, setResumeData }) => {
   const [toggle, setToggle] = useState(1);
   return (
     <section className="cv-panel">
@@ -35,7 +35,6 @@ const ResumeTabs = ({ cv, setCv }) => {
                   }`}
                   onClick={() => setToggle(item.id)}
                   title={item.title}
-                  aria-label={item.title}
                 >
                   <IconComponent />
                 </button>
@@ -52,7 +51,13 @@ const ResumeTabs = ({ cv, setCv }) => {
                 toggle === item.id ? "resume-tab-content__panel--active" : ""
               }`}
             >
-              <ResumeTabContent item={item} cv={cv} setCv={setCv} />
+              <ResumeTabContent
+                item={item}
+                cv={cv}
+                setCv={setCv}
+                resumeData={resumeData}
+                setResumeData={setResumeData}
+              />
             </div>
           ))}
         </div>
