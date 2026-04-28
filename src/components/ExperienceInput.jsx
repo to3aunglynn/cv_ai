@@ -75,19 +75,19 @@ const ExperienceInput = ({ experience, setExperience }) => {
             />
 
             <input
+              type="month"
               className="resume-builder__input"
               name="startYear"
               value={item.startYear}
               onChange={(e) => handleExperienceChange(index, e)}
-              placeholder="Start Year"
             />
 
             <input
+              type="month"
               className="resume-builder__input"
               name="endYear"
               value={item.endYear}
               onChange={(e) => handleExperienceChange(index, e)}
-              placeholder="To Year"
             />
           </div>
         </div>
