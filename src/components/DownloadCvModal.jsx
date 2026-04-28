@@ -1,10 +1,17 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { IoIosClose } from "react-icons/io";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import formatMonthYear from "../utils/formatMonthYear";
 
 const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
+  const printRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+    documentTitle: `${resumeData?.fullName || "CV"}_CV`,
+  });
+
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("modal-open");
@@ -16,23 +23,12 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
       document.body.classList.remove("modal-open");
     };
   }, [isOpen]);
+
   if (!isOpen) return null;
+
   return (
     <div className="cv-modal-overlay">
       <div className="cv-modal">
-        {/* <div className="cv-modal__header">
-          <div>
-            <h2 className="cv-modal__title">Download Tailored CV</h2>
-            <p className="cv-modal__subtitle">
-              Review the tailored CV content before downloading.
-            </p>
-          </div>
-
-          <button type="button" className="cv-modal__close" onClick={onClose}>
-            <IoIosClose />
-          </button>
-        </div> */}
-
         <div className="cv-modal__header cv-preview-header">
           <button type="button" className="cv-modal__close" onClick={onClose}>
             <IoIosClose />
@@ -66,8 +62,8 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
           ) : (
             <>
               <section className="cv-modal__section cv-preview-section">
-                <h1>Summary</h1>
-                <p>{result?.summary}</p>
+                <h1>Profile</h1>
+                <p>{result?.professional_summary}</p>
               </section>
 
               <section className="cv-modal__section cv-preview-section">
@@ -173,13 +169,114 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
             type="button"
             className="cv-btn cv-btn--primary"
             disabled={!result}
-            onClick={() => {
-              // Later you can replace this with PDF/DOCX download logic
-              alert("Download feature will be added later.");
-            }}
+            onClick={handlePrint}
           >
             Confirm Download
           </button>
+        </div>
+      </div>
+
+      <div className="cv-print-only">
+        <div ref={printRef} className="cv-print-page">
+          <header className="cv-print-header">
+            <h1>{resumeData?.fullName || "Your Name"}</h1>
+
+            <div className="cv-print-contact">
+              <span>{resumeData?.email || "email@example.com"}</span>
+              <span>{resumeData?.phone || "Phone number"}</span>
+              <span>{resumeData?.location || "Location"}</span>
+            </div>
+          </header>
+
+          <section className="cv-print-section">
+            <h2>Profile</h2>
+            <p>{result?.professional_summary}</p>
+          </section>
+
+          <section className="cv-print-section">
+            <h2>Education</h2>
+
+            {resumeData.education?.length > 0 ? (
+              resumeData.education.map((edu, index) => (
+                <div key={index} className="cv-print-entry">
+                  <div>
+                    <h3>{edu.degree || "Degree / Course not provided"}</h3>
+                    <p>{edu.university || "University not provided"}</p>
+                  </div>
+
+                  <span>
+                    {edu.startYear || edu.endYear
+                      ? `${formatMonthYear(edu.startYear)} - ${formatMonthYear(edu.endYear)}`
+                      : "Date not provided"}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p>No education details provided.</p>
+            )}
+          </section>
+
+          <section className="cv-print-section">
+            <h2>Experience</h2>
+
+            {resumeData.experience?.length > 0 ? (
+              resumeData.experience.map((exp, index) => (
+                <div key={index} className="cv-print-entry">
+                  <div>
+                    <h3>{exp.jobTitle || "Job title not provided"}</h3>
+                    <p>{exp.company || "Company not provided"}</p>
+                  </div>
+
+                  <span>
+                    {exp.startYear || exp.endYear
+                      ? `${formatMonthYear(exp.startYear)} - ${formatMonthYear(exp.endYear)}`
+                      : "Date not provided"}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p>No experience details provided.</p>
+            )}
+          </section>
+
+          <section className="cv-print-section">
+            <h2>Skills</h2>
+
+            {resumeData.skills?.length > 0 ? (
+              <ul>
+                {resumeData.skills.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))}
+              </ul>
+            ) : result?.matched_skills?.length > 0 ? (
+              <ul>
+                {result.matched_skills.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No skills provided.</p>
+            )}
+          </section>
+
+          {result && (
+            <section className="cv-print-section">
+              <h2>AI Tailored Suggestions</h2>
+
+              <p>
+                <strong>Match Score:</strong> {result.match_score}%
+              </p>
+
+              <p>{result?.summary}</p>
+
+              <h3>Tailored CV Points</h3>
+              <ul>
+                {result?.tailored_cv_points?.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </div>
     </div>
