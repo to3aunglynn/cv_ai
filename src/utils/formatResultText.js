@@ -3,6 +3,7 @@ const formatResultText = (data) => {
   const sections = [
     ["Match Score", `${data.match_score ?? 0}%`],
     ["Summary", data.summary || "No summary available."],
+    ["Professional Summary", data.professional_summary || ""],
     ["Matched Skills", data.matched_skills],
     ["Missing Skills", data.missing_skills],
     ["Improvement Suggestions", data.improvement_suggestions],
