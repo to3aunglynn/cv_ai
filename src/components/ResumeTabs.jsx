@@ -15,7 +15,7 @@ const processTabs = [
   { id: 5, title: "Describe yourself", icon: MdDataObject },
 ];
 
-const ResumeTabs = ({ cv, setCv, resumeData, setResumeData }) => {
+const ResumeTabs = ({ resumeData, setResumeData }) => { 
   const [toggle, setToggle] = useState(1);
   return (
     <section className="cv-panel">
@@ -53,8 +53,6 @@ const ResumeTabs = ({ cv, setCv, resumeData, setResumeData }) => {
             >
               <ResumeTabContent
                 item={item}
-                cv={cv}
-                setCv={setCv}
                 resumeData={resumeData}
                 setResumeData={setResumeData}
               />

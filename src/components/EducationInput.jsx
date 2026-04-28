@@ -63,7 +63,7 @@ const EducationInput = ({ education, setEducation }) => {
               name="degree"
               value={item.degree}
               onChange={(e) => handleEducationChange(index, e)}
-              placeholder="Degree / Course"
+              placeholder="Degree"
             />
 
             <input

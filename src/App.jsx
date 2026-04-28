@@ -26,13 +26,12 @@ const emptyResumeData = {
     },
   ],
   skills: [],
+
+  summary: "I am a computing student with Python and React experience.",
 };
 
 function App() {
   const [resumeData, setResumeData] = useState(emptyResumeData);
-  const [cv, setCv] = useState(
-    "I am a computing student with Python and React experience.",
-  );
   const [job, setJob] = useState(
     "We are looking for a junior developer with Flask and React skills.",
   );
@@ -45,17 +44,61 @@ function App() {
     syncThemeToDocument(theme);
   }, [theme]);
 
+  const buildCvTextForAI = () => {
+    const educationText = resumeData.education
+      .map((edu, index) => {
+        return `
+Education ${index + 1}:
+Degree/Course: ${edu.degree}
+University: ${edu.university}
+Start Year: ${edu.startYear}
+End Year: ${edu.endYear}
+`;
+      })
+      .join("\n");
+
+    const experienceText = resumeData.experience
+      .map((exp, index) => {
+        return `
+Experience ${index + 1}:
+Job Title: ${exp.jobTitle}
+Company: ${exp.company}
+Start Year: ${exp.startYear}
+End Year: ${exp.endYear}
+`;
+      })
+      .join("\n");
+
+    return `
+
+Candidate Summary:
+${resumeData.summary}
+
+${educationText}
+
+${experienceText}
+
+Skills:
+${resumeData.skills.join(", ")}
+
+
+`;
+  };
+
   const handleTailor = async () => {
-    if (!cv.trim() || !job.trim()) {
+    const cvTextForAI = buildCvTextForAI();
+
+    if (!cvTextForAI.trim() || !job.trim()) {
       setError("Please fill in both CV text and job description first.");
       setResult(null);
       return;
     }
 
     setLoading(true);
+    setError("");
 
     try {
-      const data = await analyzeCV(cv, job);
+      const data = await analyzeCV(cvTextForAI, job);
       setResult(data);
       console.log(data);
     } catch (err) {
@@ -69,15 +112,12 @@ function App() {
   return (
     <div className="cv-app">
       <InputPanel
-        cv={cv}
-        setCv={setCv}
         job={job}
         setJob={setJob}
         loading={loading}
         resumeData={resumeData}
         setResumeData={setResumeData}
         onClear={() => {
-          setCv("");
           setJob("");
           setResult(null);
           setResumeData(emptyResumeData);

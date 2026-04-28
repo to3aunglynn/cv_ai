@@ -3,7 +3,7 @@ import SkillsInput from "./SkillsInput";
 import EducationInput from "./EducationInput";
 import ExperienceInput from "./ExperienceInput";
 
-const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
+const ResumeTabContent = ({ item, resumeData, setResumeData }) => { 
   const handleChange = (e) => {
     const { name, value } = e.target; // Destructure name and value from the input
     setResumeData((prev) => ({
@@ -90,8 +90,9 @@ const ResumeTabContent = ({ item, cv, setCv, resumeData, setResumeData }) => {
           <textarea
             className="cv-textarea"
             placeholder="Paste your current CV - not including User Data..."
-            value={cv}
-            onChange={(e) => setCv(e.target.value)}
+            name="summary"
+            value={resumeData.summary}
+            onChange={handleChange}
           />
         </div>
       )}

@@ -2,8 +2,6 @@ import React from "react";
 import ResumeTabs from "./ResumeTabs";
 
 const InputPanel = ({
-  cv,
-  setCv,
   job,
   setJob,
   resumeData,
@@ -40,8 +38,6 @@ const InputPanel = ({
 
       <div className="cv-input-row">
         <ResumeTabs
-          cv={cv}
-          setCv={setCv}
           resumeData={resumeData}
           setResumeData={setResumeData}
         />
