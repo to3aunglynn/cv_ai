@@ -30,6 +30,10 @@ Follow these UK CV and ATS rules:
 - If key job skills are missing, use a low score such as 10 to 20.
 - Calculate match_score as a percentage based on how many required skills and keywords from the job description are present in the CV. Count matched skills divided by total required skills and multiply by 100.
 - professional_summary must be a 3 to 4 sentence tailored professional summary the candidate can place at the top of their CV, written in first person, based on their experience and aligned to the job requirements.
+- Generate 3 to 4 professional CV bullet points for each experience entry.
+- Use the candidate's skills, education, experience and job description.
+- Do not invent specific achievements, numbers, clients, or tools unless they are provided.
+- Keep the bullet points realistic and relevant to the job description.
 
 Return your answer ONLY in this JSON format:
 
@@ -38,6 +42,7 @@ Return your answer ONLY in this JSON format:
   "summary": "",
   "professional_summary": "",
   "matched_skills": [],
+  "experience_bullets": [],
   "missing_skills": [],
   "recommended_keywords": [],
   "improvement_suggestions": [],
@@ -73,6 +78,7 @@ def format_response(raw_response):
             "summary": "The AI response could not be formatted as JSON.",
             "professional_summary": "",
             "matched_skills": [],
+            "experience_bullets": [],
             "missing_skills": [],
             "recommended_keywords": [],
             "improvement_suggestions": [],
