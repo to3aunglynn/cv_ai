@@ -3,7 +3,7 @@ import SkillsInput from "./SkillsInput";
 import EducationInput from "./EducationInput";
 import ExperienceInput from "./ExperienceInput";
 
-const ResumeTabContent = ({ item, resumeData, setResumeData }) => { 
+const ResumeTabContent = ({ item, resumeData, setResumeData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target; // Destructure name and value from the input
     setResumeData((prev) => ({
@@ -46,6 +46,10 @@ const ResumeTabContent = ({ item, resumeData, setResumeData }) => {
             onChange={handleChange}
             placeholder="Location"
           />
+          <p className="cv-privacy-note">
+            Privacy note:: Personal details are kept local and are not sent to
+            the AI.
+          </p>
         </div>
       )}
 
@@ -89,7 +93,7 @@ const ResumeTabContent = ({ item, resumeData, setResumeData }) => {
         <div className="resume-form-grid">
           <textarea
             className="cv-textarea"
-            placeholder="Paste your current CV - not including User Data..."
+            placeholder="Write a short summary about your skills, experience, and career goals."
             name="summary"
             value={resumeData.summary}
             onChange={handleChange}

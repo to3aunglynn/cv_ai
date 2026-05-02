@@ -18,11 +18,11 @@ const OutputPanel = ({ result, loading, error, resumeData }) => {
 
         <div className="cv-ai-output">
           {loading ? (
-            <div className="cv-status">AI is analyzing...</div>
+            <div className="cv-ai-output__loading">AI is analyzing...</div>
           ) : error ? (
-            <div className="cv-status cv-status--error">{error}</div>
+            <div className="cv-ai-output__error">{error}</div>
           ) : !result ? (
-            <div className="cv-status">No data yet.</div>
+            <div className="cv-ai-output__success">No data yet.</div>
           ) : (
             <>
               {displayedText}

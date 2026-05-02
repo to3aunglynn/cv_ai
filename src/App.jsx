@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getInitialTheme, syncThemeToDocument } from "./theme/theme";
 import InputPanel from "./components/InputPanel";
 import OutputPanel from "./components/OutputPanel";
+import buildCvTextForAI from "./utils/buildCvTextForAI";
+import validateInputs from "./utils/validateInputs";
 import analyzeCV from "./api/cvService";
 
 const emptyResumeData = {
@@ -44,55 +46,18 @@ function App() {
     syncThemeToDocument(theme);
   }, [theme]);
 
-  const buildCvTextForAI = () => {
-    const educationText = resumeData.education
-      .map((edu, index) => {
-        return `
-Education ${index + 1}:
-Degree/Course: ${edu.degree}
-University: ${edu.university}
-Start Year: ${edu.startYear}
-End Year: ${edu.endYear}
-`;
-      })
-      .join("\n");
-
-    const experienceText = resumeData.experience
-      .map((exp, index) => {
-        return `
-Experience ${index + 1}:
-Job Title: ${exp.jobTitle}
-Company: ${exp.company}
-Start Year: ${exp.startYear}
-End Year: ${exp.endYear}
-`;
-      })
-      .join("\n");
-
-    return `
-
-Candidate Summary:
-${resumeData.summary}
-
-${educationText}
-
-${experienceText}
-
-Skills:
-${resumeData.skills.join(", ")}
-
-
-`;
-  };
-
   const handleTailor = async () => {
-    const cvTextForAI = buildCvTextForAI();
+    // const validationError = validateInputs();
+    const validationError = validateInputs(resumeData, job);
 
-    if (!cvTextForAI.trim() || !job.trim()) {
-      setError("Please fill in both CV text and job description first.");
+    if (validationError) {
+      setError(validationError);
       setResult(null);
       return;
     }
+
+    //const cvTextForAI = buildCvTextForAI();
+    const cvTextForAI = buildCvTextForAI(resumeData);
 
     setLoading(true);
     setError("");

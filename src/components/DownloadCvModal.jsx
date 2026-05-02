@@ -49,7 +49,7 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
               {resumeData?.phone || "Phone number"}
             </span>
 
-            <span>
+            <span className="cv-preview-header__location">
               <FiMapPin />
               {resumeData?.location || "Location"}
             </span>
@@ -136,22 +136,15 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
                 )}
               </section>
 
-              {result && (
-                <section className="cv-modal__section">
-                  <h1>AI Tailored Suggestions</h1>
-                  <p>
-                    <strong>Match Score:</strong> {result.match_score}%
-                  </p>
-                  <p>{result?.summary}</p>
-
-                  <h4>Tailored CV Points</h4>
-                  <ul>
-                    {result?.tailored_cv_points?.map((point, index) => (
-                      <li key={index}>{point}</li>
+              <section className="cv-modal__section cv-preview-section">
+                {result?.experience_bullets?.length > 0 && (
+                  <ul className="cv-preview-bullets">
+                    {result.experience_bullets.map((bullet, index) => (
+                      <li key={index}>{bullet}</li>
                     ))}
                   </ul>
-                </section>
-              )}
+                )}
+              </section>
             </>
           )}
         </div>
@@ -176,6 +169,7 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
         </div>
       </div>
 
+      {/* This is for printing */}
       <div className="cv-print-only">
         <div ref={printRef} className="cv-print-page">
           <header className="cv-print-header">
@@ -184,7 +178,9 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
             <div className="cv-print-contact">
               <span>{resumeData?.email || "email@example.com"}</span>
               <span>{resumeData?.phone || "Phone number"}</span>
-              <span>{resumeData?.location || "Location"}</span>
+              <span className="cv-preview-header__location">
+                {resumeData?.location || "Location"}
+              </span>
             </div>
           </header>
 
@@ -199,7 +195,7 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
             {resumeData.education?.length > 0 ? (
               resumeData.education.map((edu, index) => (
                 <div key={index} className="cv-print-entry">
-                  <div>
+                  <div className="cv-print-entry__main">
                     <h3>{edu.degree || "Degree / Course not provided"}</h3>
                     <p>{edu.university || "University not provided"}</p>
                   </div>
@@ -222,7 +218,7 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
             {resumeData.experience?.length > 0 ? (
               resumeData.experience.map((exp, index) => (
                 <div key={index} className="cv-print-entry">
-                  <div>
+                  <div className="cv-print-entry__main">
                     <h3>{exp.jobTitle || "Job title not provided"}</h3>
                     <p>{exp.company || "Company not provided"}</p>
                   </div>
@@ -259,24 +255,15 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
             )}
           </section>
 
-          {result && (
-            <section className="cv-print-section">
-              <h2>AI Tailored Suggestions</h2>
-
-              <p>
-                <strong>Match Score:</strong> {result.match_score}%
-              </p>
-
-              <p>{result?.summary}</p>
-
-              <h3>Tailored CV Points</h3>
+          <section className="cv-print-section">
+            {result?.experience_bullets?.length > 0 && (
               <ul>
-                {result?.tailored_cv_points?.map((point, index) => (
-                  <li key={index}>{point}</li>
+                {result.experience_bullets.map((bullet, index) => (
+                  <li key={index}>{bullet}</li>
                 ))}
               </ul>
-            </section>
-          )}
+            )}
+          </section>
         </div>
       </div>
     </div>

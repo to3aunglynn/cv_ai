@@ -8,18 +8,18 @@ import { MdDataObject } from "react-icons/md";
 import ResumeTabContent from "./ResumeTabContent";
 
 const processTabs = [
-  { id: 1, title: "Personal", icon: FaRegUser },
+  { id: 1, title: "Personal Details", icon: FaRegUser },
   { id: 2, title: "Education", icon: SlGraduation },
   { id: 3, title: "Experience", icon: BsSuitcaseLg },
   { id: 4, title: "Skills", icon: RiToolsFill },
-  { id: 5, title: "Describe yourself", icon: MdDataObject },
+  { id: 5, title: "Professional Summary", icon: MdDataObject },
 ];
 
-const ResumeTabs = ({ resumeData, setResumeData }) => { 
+const ResumeTabs = ({ resumeData, setResumeData }) => {
   const [toggle, setToggle] = useState(1);
   return (
     <section className="cv-panel">
-      <h3 className="cv-panel__title">Your Resume</h3>
+      <h3 className="cv-panel__title">Your CV details</h3>
 
       <div className="resume-layout">
         <ul className="resume-tabs">

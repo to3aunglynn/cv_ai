@@ -18,8 +18,10 @@ const InputPanel = ({
         <div className="cv-header__brand">
           <h1 className="cv-title">AI CV Tailor</h1>
           <p className="cv-subtitle">
-            Paste your resume and a job description to align wording and
-            keywords.
+            {/* Paste your resume and a job description to align wording and
+            keywords. */}
+            Enter your CV details and paste a job description to receive
+            tailored suggestions and keyword advice.
           </p>
         </div>
         <div className="cv-header__actions">
@@ -37,16 +39,13 @@ const InputPanel = ({
       </header>
 
       <div className="cv-input-row">
-        <ResumeTabs
-          resumeData={resumeData}
-          setResumeData={setResumeData}
-        />
+        <ResumeTabs resumeData={resumeData} setResumeData={setResumeData} />
 
         <section className="cv-panel">
           <h3 className="cv-panel__title">Job Description</h3>
           <textarea
             className="cv-textarea cv-textarea--height-fixed"
-            placeholder="Paste the role description..."
+            placeholder="Paste the job description here, including required skills, responsibilities, and qualifications..."
             value={job}
             onChange={(e) => setJob(e.target.value)}
           />

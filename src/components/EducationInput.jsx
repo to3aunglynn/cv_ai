@@ -74,22 +74,6 @@ const EducationInput = ({ education, setEducation }) => {
               placeholder="University"
             />
 
-            {/* <input
-              className="resume-builder__input"
-              name="startYear"
-              value={item.startYear}
-              onChange={(e) => handleEducationChange(index, e)}
-              placeholder="Start Year"
-            />
-
-            <input
-              className="resume-builder__input"
-              name="endYear"
-              value={item.endYear}
-              onChange={(e) => handleEducationChange(index, e)}
-              placeholder="To Year"
-            /> */}
-
             <input
               type="month"
               className="resume-builder__input"
