@@ -37,7 +37,7 @@ cv_ai/
 ├── backend/
 │   ├── app.py
 │   ├── ai_service.py
-│   ├── promptbuilder.py
+│   ├── prompt_builder.py
 │   ├── requirements.txt
 │   └── .env
 ├── src/
@@ -106,10 +106,8 @@ python3 app.py
 [python3 app.py](http://127.0.0.1:5000)
 ```
 
-- You can test it by opening:
-```bash
-[python3 app.py](http://127.0.0.1:5000/)
-```
+- Backend URL: http://127.0.0.1:5000
+
 
 ---
 
@@ -133,6 +131,8 @@ npm run dev
 ```bash
 [npm install](http://localhost:5173)
 ```
+
+- Frontend URL: http://localhost:5173
 
 ---
 
