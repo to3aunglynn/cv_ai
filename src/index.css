@@ -775,6 +775,7 @@ body.modal-open {
 }
 
 .cv-modal__section ul {
+  padding-left: 23px;
   margin: 0;
   color: var(--cv-text);
   text-transform: capitalize;
@@ -872,6 +873,7 @@ body.modal-open {
 .cv-preview-entry__main p,
 .cv-print-entry__main p {
   margin: 0;
+  margin-bottom: 6px;
   font-size: 1rem;
   color: var(--cv-text-muted);
   text-transform: capitalize;
@@ -909,6 +911,12 @@ body.modal-open {
 
 .cv-preview-empty {
   margin: 0;
+  color: var(--cv-text-muted);
+}
+
+.cv-preview-bullets li {
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--cv-text-muted);
 }
 

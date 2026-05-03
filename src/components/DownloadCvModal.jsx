@@ -100,6 +100,13 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
                       <div className="cv-preview-entry__main">
                         <h2>{exp.jobTitle || "no"}</h2>
                         <p>{exp.company || "no"}</p>
+                        {result?.experience_bullets?.length > 0 && (
+                          <ul className="cv-preview-bullets">
+                            {result.experience_bullets.map((bullet, index) => (
+                              <li key={index}>{bullet}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
 
                       <span className="cv-preview-entry__date">
@@ -133,16 +140,6 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
                   </ul>
                 ) : (
                   <p className="cv-preview-empty">No skills provided.</p>
-                )}
-              </section>
-
-              <section className="cv-modal__section cv-preview-section">
-                {result?.experience_bullets?.length > 0 && (
-                  <ul className="cv-preview-bullets">
-                    {result.experience_bullets.map((bullet, index) => (
-                      <li key={index}>{bullet}</li>
-                    ))}
-                  </ul>
                 )}
               </section>
             </>
@@ -221,6 +218,13 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
                   <div className="cv-print-entry__main">
                     <h3>{exp.jobTitle || "Job title not provided"}</h3>
                     <p>{exp.company || "Company not provided"}</p>
+                    {result?.experience_bullets?.length > 0 && (
+                      <ul>
+                        {result.experience_bullets.map((bullet, index) => (
+                          <li key={index}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   <span>
@@ -252,16 +256,6 @@ const DownloadCvModal = ({ isOpen, onClose, result, resumeData }) => {
               </ul>
             ) : (
               <p>No skills provided.</p>
-            )}
-          </section>
-
-          <section className="cv-print-section">
-            {result?.experience_bullets?.length > 0 && (
-              <ul>
-                {result.experience_bullets.map((bullet, index) => (
-                  <li key={index}>{bullet}</li>
-                ))}
-              </ul>
             )}
           </section>
         </div>
