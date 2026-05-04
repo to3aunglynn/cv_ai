@@ -169,13 +169,11 @@ body {
 }
 
 
-
 .cv-input-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-
 
 
 .cv-panel {
@@ -249,7 +247,6 @@ body {
   justify-content: flex-start;
   gap: 12px;
 }
-
 
 
 .cv-btn {
@@ -356,7 +353,6 @@ body {
   flex-shrink: 0;
   margin-left: auto;
 }
-
 
 
 /* Tailor Resume Output Typing box */
@@ -589,8 +585,6 @@ body {
 }
 
 
-
-
 /* for education & experience */
 .resume-form-grid {
   display: grid;
@@ -601,8 +595,6 @@ body {
 .resume-form-grid .cv-textarea {
   grid-column: 1 / -1;
 }
-
-
 
 
 /* Skills */
@@ -794,7 +786,6 @@ body.modal-open {
 }
 
 
-
 /* education */
 .resume-list-form {
   display: flex;
@@ -919,7 +910,6 @@ body.modal-open {
   font-weight: 500;
   color: var(--cv-text-muted);
 }
-
 
 
 /* For Print */

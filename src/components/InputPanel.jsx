@@ -18,8 +18,6 @@ const InputPanel = ({
         <div className="cv-header__brand">
           <h1 className="cv-title">AI CV Tailor</h1>
           <p className="cv-subtitle">
-            {/* Paste your resume and a job description to align wording and
-            keywords. */}
             Enter your CV details and paste a job description to receive
             tailored suggestions and keyword advice.
           </p>

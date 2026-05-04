@@ -29,14 +29,12 @@ const emptyResumeData = {
   ],
   skills: [],
 
-  summary: "I am a computing student with Python and React experience.",
+  summary: "",
 };
 
 function App() {
   const [resumeData, setResumeData] = useState(emptyResumeData);
-  const [job, setJob] = useState(
-    "We are looking for a junior developer with Flask and React skills.",
-  );
+  const [job, setJob] = useState("");
   const [result, setResult] = useState(null);
   const [theme, setTheme] = useState(getInitialTheme);
   const [loading, setLoading] = useState(false);

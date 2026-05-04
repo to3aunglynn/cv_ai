@@ -4,7 +4,6 @@ import { IoIosClose } from "react-icons/io";
 
 const SkillsInput = ({ skills, setSkills }) => {
   const [skillInput, setSkillInput] = useState("");
-  // const [skills, setSkills] = useState([]);
 
   const addSkill = () => {
     const newSkill = skillInput.trim();
