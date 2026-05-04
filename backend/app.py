@@ -14,7 +14,6 @@ def home():
 def health():
     return jsonify({"status": "ok"})
 
-
 @app.route("/api/analyze", methods=["POST"])
 def analyze():
     try:
