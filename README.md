@@ -2,15 +2,13 @@
 
 AI CV Tailor is a web application that helps users improve their CV based on a job description. The user can enter resume details and a job description, then the system sends the information to an AI backend and returns a tailored analysis such as match score, missing skills, recommended keywords, improvement suggestions, and tailored CV points.
 
-<!--
-## Screenshots
+## User Interface
 
 ### Dark Mode
 ![AI-CV-DarkMode](./dark.png)
 
 ### Light Mode
 ![AI-CV-LightMode](./light.png)
--->
 ---
 
 ## Technologies Used
