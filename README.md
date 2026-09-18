@@ -2,6 +2,10 @@
 
 AI CV Tailor is a web application that helps users improve their CV based on a job description. The user can enter resume details and a job description, then the system sends the information to an AI backend and returns a tailored analysis such as match score, missing skills, recommended keywords, improvement suggestions, and tailored CV points.
 
+# Team
+
+This project was developed as an MSc Computing group project at Edinburgh Napier University, supervised by Dr Kia Dashtipour. The team was made up of Wai Yan Htet (Project Manager), Ei Sandy Phyo (Backend Developer), Zwel Nyi Nyar Htut (Testing & Research Lead) and Toe Aung Lin (UI/UX Developer).
+
 ## User Interface
 
 ### Dark Mode
